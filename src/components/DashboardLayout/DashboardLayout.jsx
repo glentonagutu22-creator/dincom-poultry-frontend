@@ -1,14 +1,49 @@
 
+
 import { useState } from "react";
 import { Bird } from "lucide-react";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 import MovingImageBackground from "../MovingImageBackground";
 
-function DashboardLayout({ children }) {
+const backgroundCollections = {
+  default: [
+    "/images/image-1.png",
+    "/images/image-2.png",
+    "/images/image-3.png",
+    "/images/image-4.png",
+    "/images/image-5.png",
+  ],
+  dashboard: [
+    "/dashboard/image-1.png",
+    "/dashboard/image-2.png",
+    "/dashboard/image-3.png",
+    "/dashboard/image-4.png",
+    "/dashboard/image-5.png",
+  ],
+  eggs: [
+    "/eggs/image-1.png",
+    "/eggs/image-2.png",
+    "/eggs/image-3.png",
+    "/eggs/image-4.png",
+    "/eggs/image-5.png",
+  ],
+  feedProduction: [
+    "/feed-production/image-1.png",
+    "/feed-production/image-2.png",
+    "/feed-production/image-3.png",
+    "/feed-production/image-4.png",
+    "/feed-production/image-5.png",
+  ],
+};
+
+function DashboardLayout({ children, background = "default" }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const closeSidebar = () => setIsSidebarOpen(false);
+
+  const backgroundImages =
+    backgroundCollections[background] ?? backgroundCollections.default;
 
   return (
     <div className="min-h-screen bg-[#F7F8FA] text-white">
@@ -21,7 +56,7 @@ function DashboardLayout({ children }) {
         <Topbar onMenuClick={() => setIsSidebarOpen(true)} />
 
         <main className="relative isolate w-full min-w-0 flex-1 overflow-hidden">
-          <MovingImageBackground />
+          <MovingImageBackground images={backgroundImages} />
 
           <div className="relative z-10 min-h-full p-4 sm:p-6 lg:p-7">
             {children}

@@ -1,5 +1,6 @@
 
-const images = [
+
+const defaultImages = [
   "/images/image-1.png",
   "/images/image-2.png",
   "/images/image-3.png",
@@ -7,11 +8,13 @@ const images = [
   "/images/image-5.png",
 ];
 
-function MovingImageBackground() {
+function MovingImageBackground({ images = defaultImages }) {
+  const backgroundImages = images.length > 0 ? images : defaultImages;
+
   return (
     <div className="absolute inset-0 overflow-hidden">
       <div className="flex h-full w-max animate-slide-images">
-        {[...images, ...images].map((src, index) => (
+        {[...backgroundImages, ...backgroundImages].map((src, index) => (
           <div
             key={`${src}-${index}`}
             className="h-full w-screen shrink-0"

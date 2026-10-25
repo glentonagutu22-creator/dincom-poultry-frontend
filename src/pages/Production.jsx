@@ -303,7 +303,7 @@ function Production() {
   ];
 
   return (
-    <DashboardLayout>
+    <DashboardLayout background="dashboard">
       <div className="space-y-6">
         <section className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>

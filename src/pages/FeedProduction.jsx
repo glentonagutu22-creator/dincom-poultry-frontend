@@ -740,7 +740,7 @@ export default function FeedProduction() {
   };
 
   return (
-    <DashboardLayout>
+    <DashboardLayout background="feedProduction">
       <div className="space-y-6">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div>
